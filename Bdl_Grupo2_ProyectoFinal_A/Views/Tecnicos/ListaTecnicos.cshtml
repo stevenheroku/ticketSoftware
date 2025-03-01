@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Bdl_Grupo2_ProyectoFinal_A.Tecnicos>
+
+@{ ViewBag.Title = "Lst_Técnicos";
+    Layout = "~/Views/Shared/_Layout.cshtml";}
+
+
+<div class="container animate__animated animate__fadeIn w3_">
+    <h2 style="display:inline-block; margin-top:50px; margin-left:300px;" class="display-4">LISTA DE TÉCNICOS</h2>
+    <div style="margin-top: 40px;" class="row">
+        @foreach (var item in Model)
+        {
+<div class="col-md-4" style="margin-top:20px; margin-bottom:20px;">
+    <div class="card" style="width:18rem; margin:10px;">
+        <div class="card-body">
+            <h5 class="card-title">Nombre Técnico</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.Tec_Nombre1  @item.Tec_Apellido1</h6>
+            <br />
+            <hr />
+            <h5 class="card-title">Doc. de Identificación</h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">@item.DPI</h6>
+            <br />
+            <hr />
+            <h5 class="card-title">Tickets Asignados</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.Cant_TicketAsignados</h6>
+            <br />
+            <hr />
+
+        </div>
+    </div>
+</div>      }
+    </div>
+</div>

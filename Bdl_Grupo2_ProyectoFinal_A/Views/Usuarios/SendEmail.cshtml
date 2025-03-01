@@ -1,0 +1,49 @@
+﻿@model Bdl_Grupo2_ProyectoFinal_A.Usuarios
+@{
+    ViewBag.Title = "SendEmail";
+}
+
+<h2 style="display:inline-block; margin-top:30px; margin-left:15px; margin-bottom: 40px;" class="display-5">ENVIO DE EMAIL</h2>
+<div class="container animate__animated animate__fadeIn w3_">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <input type="text" value=@Model.Usr_Id class="form-control" name="id" id="id" hidden placeholder="Asunto">
+            <label for="inputAddress">Correo Electrónico</label>
+            @Html.EditorFor(model => model.Usr_Correo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Usr_Correo, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Asunto" required>
+            <div class="invalid-feedback">
+                El asunto es obligatorio.
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea maxlength="499" class="form-control" id="email" name="email" rows="3" placeholder="-" required></textarea>
+        </div>
+        <div class="invalid-feedback">
+            El campo es obligatorio.
+        </div>
+        if (Model.Usr_Id != 0)
+        {
+        <input type="submit" value="Enviar" class="btn btn-primary">
+
+        <a class="btn btn-link" href="~/Ticket/View_Ticket/@Model.Usr_Id" style="position: relative;">
+            Regresar
+        </a>
+        }
+        if (Model.enviado == 1)
+        {
+            <div class="alert alert-success" role="alert" style="margin-top: 20px;">
+                ¡Su correo se ha enviado exitosamente!
+            </div>
+        }
+        else if (Model.enviado == 2)
+        {
+            <div class="alert alert-danger" role="alert" style="margin-top: 20px;">
+                Error al enviar, por favor intente de nuevo.
+            </div>
+        }
+    }
+</div>

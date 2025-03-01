@@ -1,0 +1,97 @@
+﻿@model Bdl_Grupo2_ProyectoFinal_A.Equipos
+
+@{
+    ViewBag.Title = "Añadir Equipo";
+    Layout =null;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <title>@ViewBag.Title</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+          rel="stylesheet" />
+    <link href="~/Css/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="background-color: #CCCCFF;">
+    <div class="container animate__animated animate__fadeIn w3_" style="margin-top: 50px; padding: 0px 200px 0px 200px;">
+        <div class="card login-form">
+            <div class="card-body">
+                <form action="/Equipo/CrearEquipo" method="post" class="needs-validation" novalidate>
+                    <input type="text" name="Usr_Id" id="Usr_Id" value="@Model.Usr_Id" aria-describedby="inputGroupPrepend" required hidden>
+                    <div class="form-horizontal">
+
+                        <h2 class="display-4" style="margin-top: 30px; margin-bottom: 30px;">Añadir Equipo</h2>
+                        <hr />
+                        <div class="form-group">
+                            <label style="margin-bottom: 5px;"><b>*Se le enviara un correo eléctronico con el código unico de su equipo.*</b></label>
+                            <input type="text" name="Eqs_Codigo" id="Eqs_Codigo" tabindex="1" class="form-control" placeholder="-" value="@Model.Eqs_Codigo" aria-describedby="inputGroupPrepend" required hidden>
+                            <div class="invalid-feedback" style="font-size: 8px;">
+                                *Este campo es obligatorio.
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>Modelo Equipo</label>
+                            <input type="text" name="Hdw_Modelo" id="Hdw_Modelo" tabindex="1" class="form-control" placeholder="1XXXX" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback" style="font-size: 8px;">
+                                *Este campo es obligatorio.
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>No. Serie</label>
+                            <input type="text" name="Hdw_Serie" id="Hdw_Serie" tabindex="1" class="form-control" placeholder="-" aria-describedby="inputGroupPrepend" required>
+                            <div class="invalid-feedback" style="font-size: 8px;">
+                                *Este campo es obligatorio.
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>Nombre Fabricante</label>
+                            @Html.DropDownList("Fabric_Id", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>Software del Equipo</label>
+                            @Html.DropDownList("Sfw_Id", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Añadir +" class="btn btn-primary" />
+                                <a class="btn btn-link" href="~/Ticket/Crear" style="position: relative;">
+                                    Regresar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @if (Model.aceptado == 1)
+             { 
+            <div class="alert alert-danger" role="alert" style="position: absolute;top:30px;left: 40em;">
+                El número de serie ya esta registrado en otro equipo.
+            </div>
+            } 
+        </div>
+    </div>
+    <script>
+        (function () {
+            '';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>

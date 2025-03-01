@@ -1,0 +1,67 @@
+﻿@model Bdl_Grupo2_ProyectoFinal_A.Tickets
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container animate__animated animate__fadeIn w3_" style="margin-bottom: 50px;">
+    <div class="container">
+        <h2 style="margin-top: 110px;">Eliminar Ticket</h2>
+
+        <h3>¿Estas seguro de eliminar este Ticket y todos su recordatorios permanentemente?</h3>
+        <div>
+            <hr />
+            <div style="overflow-y: scroll; max-height: 250px; width: 700px;  margin-top: 65px;">
+                <h5 class="card-title" style="position: absolute; top: 235px;"><b style="color: #888888;">Información</b></h5>
+                <div style="left: 50px; color: #575757;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Código Ticket: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Tkt_Codigo</b></h5>
+                    <hr />
+                </div>
+                <div style="left: 50px;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Descripción: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Tkt_Descripcion</b></h5>
+                    <hr />
+                </div>
+                <div style="left: 50px; top: 290px;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Estado del Ticket: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Estado_Ticket.EstdTick_Tipo</b></h5>
+                    <hr />
+                </div>
+                <div style="left: 50px; top: 290px;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Problema Técnico: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Problemas_Tecnicos.Prb_Descripcion</b></h5>
+                    <hr />
+                </div>
+                <div style="left: 50px; top: 290px;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Técnico encargado: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Tecnicos.Tec_Nombre1 @Model.Tecnicos.Tec_Nombre2 - @Model.Tecnicos.DPI</b></h5>
+                    <hr />
+                </div>
+                <div style="left: 50px; top: 290px;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Prioridad: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Ticket_Prioridad.TktPrd_Tipo</b></h5>
+                    <hr />
+                </div>
+                <div style="left: 50px; top: 290px;">
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;">Departamento usuario: </h5>
+                    <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Usuarios.Departamentos.Dpt_Tipo</b></h5>
+                    <hr />
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Eliminar" class="btn btn-danger" />
+                        <a class="btn btn-link" href="~/Ticket/ListTickets" style="position: relative;">
+                            Regresar
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

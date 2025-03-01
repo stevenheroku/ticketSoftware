@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e6c3ddbe9104eb2afe38c5703440622" Name="Diagram1">
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Departamentos" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Equipos" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Estado_Ticket" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Fabricante" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Hardware" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Perfiles" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Problemas_Tecnicos" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Recordatorios" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Software" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Tecnicos" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Ticket_Prioridad" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Tickets" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Tipo_Software" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.UsrTecnicos" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bdl_ProyectoFinal_AModel.Usuarios" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefDepartamentos1" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.fk_EquipoTickets" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefHardware22" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefSoftware23" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefUsuarios25" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefEstado_Ticket19" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefFabricante6" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefFabricante7" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefPerfiles14" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefProblemas_Tecnicos16" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefTickets18" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefTipo_Software17" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefTecnicos12" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefTecnicos26" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefTicket_Prioridad15" ManuallyRouted="false" />
+        <AssociationConnector Association="Bdl_ProyectoFinal_AModel.RefUsuarios20" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

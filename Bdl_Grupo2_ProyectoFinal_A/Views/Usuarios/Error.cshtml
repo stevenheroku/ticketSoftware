@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="sign-up" style="text-align:center; margin-left:-50px">
+        <h2>CONTRASEÑA O USUARIO INCORRECTO VUELTA A INICIAR SESION</h2>
+        <input type="text" class="form-control form-control-sm" name="codigo" value="@ViewData["Valor"]">
+        @Html.ActionLink("INICIAR SESION DE NUEVO", "Index")
+    </div>
+</body>
+
+</html>

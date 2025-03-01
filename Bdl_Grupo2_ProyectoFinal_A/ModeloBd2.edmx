@@ -1,0 +1,1156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Bdl_ProyectoFinal_AModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="Dpt_Id" />
+          </Key>
+          <Property Name="Dpt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dpt_Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Dpt_Nivel" Type="int" Nullable="false" />
+          <Property Name="Dpt_CantidadComputo" Type="int" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="Eqs_Id" />
+          </Key>
+          <Property Name="Eqs_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Eqs_Codigo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hdw_Id" Type="int" />
+          <Property Name="Sfw_Id" Type="int" />
+          <Property Name="Usr_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Estado_Ticket">
+          <Key>
+            <PropertyRef Name="EstdTick_Id" />
+          </Key>
+          <Property Name="EstdTick_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstdTick_Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabricante">
+          <Key>
+            <PropertyRef Name="Fabric_Id" />
+          </Key>
+          <Property Name="Fabric_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fabric_Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hardware">
+          <Key>
+            <PropertyRef Name="Hdw_Id" />
+          </Key>
+          <Property Name="Hdw_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hdw_Modelo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Hdw_Serie" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Fabric_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="Prf_Id" />
+          </Key>
+          <Property Name="Prf_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prf_Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Problemas_Tecnicos">
+          <Key>
+            <PropertyRef Name="PrbTc_Id" />
+          </Key>
+          <Property Name="PrbTc_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prb_Descripcion" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recordatorios">
+          <Key>
+            <PropertyRef Name="Rcdt_Id" />
+          </Key>
+          <Property Name="Rcdt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rcdt_Descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Tkt_Id" Type="int" />
+          <Property Name="Rcdt_Fecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Software">
+          <Key>
+            <PropertyRef Name="Sfw_Id" />
+          </Key>
+          <Property Name="Sfw_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sfw_Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Fabric_Id" Type="int" />
+          <Property Name="TpStw_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tecnicos">
+          <Key>
+            <PropertyRef Name="Tec_Id" />
+          </Key>
+          <Property Name="Tec_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DPI" Type="nvarchar" MaxLength="13" />
+          <Property Name="Tec_Nombre1" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Tec_Nombre2" Type="nvarchar" MaxLength="25" />
+          <Property Name="Tec_Nombre3" Type="nvarchar" MaxLength="25" />
+          <Property Name="Tec_Apellido1" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Tec_Apellido2" Type="nvarchar" MaxLength="25" />
+          <Property Name="Tec_Apellido3" Type="nvarchar" MaxLength="25" />
+          <Property Name="Tec_Direccion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Tec_TlfPersonal" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Tec_TlfCasa" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Prf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Ticket_Prioridad">
+          <Key>
+            <PropertyRef Name="TktPrd_Id" />
+          </Key>
+          <Property Name="TktPrd_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TktPrd_Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Tkt_Id" />
+          </Key>
+          <Property Name="Tkt_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tkt_Codigo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tec_Id" Type="int" />
+          <Property Name="TktPrd_Id" Type="int" />
+          <Property Name="PrbTc_Id" Type="int" />
+          <Property Name="EstdTick_Id" Type="int" />
+          <Property Name="Usr_Id" Type="int" />
+          <Property Name="Tkt_Descripcion" Type="nvarchar" MaxLength="500" />
+          <Property Name="Eqs_Id" Type="int" />
+          <Property Name="Tkt_Fecha_Hora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Software">
+          <Key>
+            <PropertyRef Name="TpStw_Id" />
+          </Key>
+          <Property Name="TpStw_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TpStw_Tipo" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsrTecnicos">
+          <Key>
+            <PropertyRef Name="UsrTecnico_Id" />
+          </Key>
+          <Property Name="UsrTecnico_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsrTecnico_Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UsrTecnico_Password" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tec_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Usr_Id" />
+          </Key>
+          <Property Name="Usr_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usr_CodigoUsuario" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Usr_NombreUsuario" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Usr_Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Usr_Password" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Dpt_Id" Type="int" />
+        </EntityType>
+        <Association Name="fk_EquipoTickets">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="Eqs_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Eqs_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefDepartamentos1">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Dpt_Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="Dpt_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefEstado_Ticket19">
+          <End Role="Estado_Ticket" Type="Self.Estado_Ticket" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Ticket">
+              <PropertyRef Name="EstdTick_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="EstdTick_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefFabricante6">
+          <End Role="Fabricante" Type="Self.Fabricante" Multiplicity="0..1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricante">
+              <PropertyRef Name="Fabric_Id" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="Fabric_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefFabricante7">
+          <End Role="Fabricante" Type="Self.Fabricante" Multiplicity="0..1" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricante">
+              <PropertyRef Name="Fabric_Id" />
+            </Principal>
+            <Dependent Role="Hardware">
+              <PropertyRef Name="Fabric_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefHardware22">
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hardware">
+              <PropertyRef Name="Hdw_Id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="Hdw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPerfiles14">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="0..1" />
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="Prf_Id" />
+            </Principal>
+            <Dependent Role="Tecnicos">
+              <PropertyRef Name="Prf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProblemas_Tecnicos16">
+          <End Role="Problemas_Tecnicos" Type="Self.Problemas_Tecnicos" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problemas_Tecnicos">
+              <PropertyRef Name="PrbTc_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="PrbTc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSoftware23">
+          <End Role="Software" Type="Self.Software" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Software">
+              <PropertyRef Name="Sfw_Id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="Sfw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTecnicos12">
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnicos">
+              <PropertyRef Name="Tec_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Tec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTecnicos26">
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="0..1" />
+          <End Role="UsrTecnicos" Type="Self.UsrTecnicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnicos">
+              <PropertyRef Name="Tec_Id" />
+            </Principal>
+            <Dependent Role="UsrTecnicos">
+              <PropertyRef Name="Tec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTicket_Prioridad15">
+          <End Role="Ticket_Prioridad" Type="Self.Ticket_Prioridad" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket_Prioridad">
+              <PropertyRef Name="TktPrd_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="TktPrd_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTickets18">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+          <End Role="Recordatorios" Type="Self.Recordatorios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="Tkt_Id" />
+            </Principal>
+            <Dependent Role="Recordatorios">
+              <PropertyRef Name="Tkt_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipo_Software17">
+          <End Role="Tipo_Software" Type="Self.Tipo_Software" Multiplicity="0..1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Software">
+              <PropertyRef Name="TpStw_Id" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="TpStw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUsuarios20">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Usr_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Usr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUsuarios25">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Usr_Id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="Usr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Bdl_ProyectoFinal_AModelStoreContainer">
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado_Ticket" EntityType="Self.Estado_Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabricante" EntityType="Self.Fabricante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Problemas_Tecnicos" EntityType="Self.Problemas_Tecnicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recordatorios" EntityType="Self.Recordatorios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Software" EntityType="Self.Software" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tecnicos" EntityType="Self.Tecnicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket_Prioridad" EntityType="Self.Ticket_Prioridad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Software" EntityType="Self.Tipo_Software" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsrTecnicos" EntityType="Self.UsrTecnicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_EquipoTickets" Association="Self.fk_EquipoTickets">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefDepartamentos1" Association="Self.RefDepartamentos1">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="RefEstado_Ticket19" Association="Self.RefEstado_Ticket19">
+            <End Role="Estado_Ticket" EntitySet="Estado_Ticket" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefFabricante6" Association="Self.RefFabricante6">
+            <End Role="Fabricante" EntitySet="Fabricante" />
+            <End Role="Software" EntitySet="Software" />
+          </AssociationSet>
+          <AssociationSet Name="RefFabricante7" Association="Self.RefFabricante7">
+            <End Role="Fabricante" EntitySet="Fabricante" />
+            <End Role="Hardware" EntitySet="Hardware" />
+          </AssociationSet>
+          <AssociationSet Name="RefHardware22" Association="Self.RefHardware22">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="RefPerfiles14" Association="Self.RefPerfiles14">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+          </AssociationSet>
+          <AssociationSet Name="RefProblemas_Tecnicos16" Association="Self.RefProblemas_Tecnicos16">
+            <End Role="Problemas_Tecnicos" EntitySet="Problemas_Tecnicos" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefSoftware23" Association="Self.RefSoftware23">
+            <End Role="Software" EntitySet="Software" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="RefTecnicos12" Association="Self.RefTecnicos12">
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefTecnicos26" Association="Self.RefTecnicos26">
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+            <End Role="UsrTecnicos" EntitySet="UsrTecnicos" />
+          </AssociationSet>
+          <AssociationSet Name="RefTicket_Prioridad15" Association="Self.RefTicket_Prioridad15">
+            <End Role="Ticket_Prioridad" EntitySet="Ticket_Prioridad" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefTickets18" Association="Self.RefTickets18">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="Recordatorios" EntitySet="Recordatorios" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipo_Software17" Association="Self.RefTipo_Software17">
+            <End Role="Tipo_Software" EntitySet="Tipo_Software" />
+            <End Role="Software" EntitySet="Software" />
+          </AssociationSet>
+          <AssociationSet Name="RefUsuarios20" Association="Self.RefUsuarios20">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefUsuarios25" Association="Self.RefUsuarios25">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Bdl_ProyectoFinal_AModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="Dpt_Id" />
+          </Key>
+          <Property Name="Dpt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dpt_Tipo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dpt_Nivel" Type="Int32" Nullable="false" />
+          <Property Name="Dpt_CantidadComputo" Type="Int32" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.RefDepartamentos1" FromRole="Departamentos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="Eqs_Id" />
+          </Key>
+          <Property Name="Eqs_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Eqs_Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hdw_Id" Type="Int32" />
+          <Property Name="Sfw_Id" Type="Int32" />
+          <Property Name="Usr_Id" Type="Int32" />
+          <NavigationProperty Name="Tickets" Relationship="Self.fk_EquipoTickets" FromRole="Equipos" ToRole="Tickets" />
+          <NavigationProperty Name="Hardware" Relationship="Self.RefHardware22" FromRole="Equipos" ToRole="Hardware" />
+          <NavigationProperty Name="Software" Relationship="Self.RefSoftware23" FromRole="Equipos" ToRole="Software" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.RefUsuarios25" FromRole="Equipos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Estado_Ticket">
+          <Key>
+            <PropertyRef Name="EstdTick_Id" />
+          </Key>
+          <Property Name="EstdTick_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstdTick_Tipo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.RefEstado_Ticket19" FromRole="Estado_Ticket" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Fabricante">
+          <Key>
+            <PropertyRef Name="Fabric_Id" />
+          </Key>
+          <Property Name="Fabric_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fabric_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Software" Relationship="Self.RefFabricante6" FromRole="Fabricante" ToRole="Software" />
+          <NavigationProperty Name="Hardware" Relationship="Self.RefFabricante7" FromRole="Fabricante" ToRole="Hardware" />
+        </EntityType>
+        <EntityType Name="Hardware">
+          <Key>
+            <PropertyRef Name="Hdw_Id" />
+          </Key>
+          <Property Name="Hdw_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hdw_Modelo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hdw_Serie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fabric_Id" Type="Int32" />
+          <NavigationProperty Name="Equipos" Relationship="Self.RefHardware22" FromRole="Hardware" ToRole="Equipos" />
+          <NavigationProperty Name="Fabricante" Relationship="Self.RefFabricante7" FromRole="Hardware" ToRole="Fabricante" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="Prf_Id" />
+          </Key>
+          <Property Name="Prf_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prf_Tipo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tecnicos" Relationship="Self.RefPerfiles14" FromRole="Perfiles" ToRole="Tecnicos" />
+        </EntityType>
+        <EntityType Name="Problemas_Tecnicos">
+          <Key>
+            <PropertyRef Name="PrbTc_Id" />
+          </Key>
+          <Property Name="PrbTc_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prb_Descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.RefProblemas_Tecnicos16" FromRole="Problemas_Tecnicos" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Recordatorios">
+          <Key>
+            <PropertyRef Name="Rcdt_Id" />
+          </Key>
+          <Property Name="Rcdt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rcdt_Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tkt_Id" Type="Int32" />
+          <Property Name="Rcdt_Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tickets" Relationship="Self.RefTickets18" FromRole="Recordatorios" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Software">
+          <Key>
+            <PropertyRef Name="Sfw_Id" />
+          </Key>
+          <Property Name="Sfw_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sfw_Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fabric_Id" Type="Int32" />
+          <Property Name="TpStw_Id" Type="Int32" />
+          <NavigationProperty Name="Equipos" Relationship="Self.RefSoftware23" FromRole="Software" ToRole="Equipos" />
+          <NavigationProperty Name="Fabricante" Relationship="Self.RefFabricante6" FromRole="Software" ToRole="Fabricante" />
+          <NavigationProperty Name="Tipo_Software" Relationship="Self.RefTipo_Software17" FromRole="Software" ToRole="Tipo_Software" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tecnicos">
+          <Key>
+            <PropertyRef Name="Tec_Id" />
+          </Key>
+          <Property Name="Tec_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DPI" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Tec_Nombre1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tec_Nombre2" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Tec_Nombre3" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Tec_Apellido1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tec_Apellido2" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Tec_Apellido3" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Tec_Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Tec_TlfPersonal" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tec_TlfCasa" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prf_Id" Type="Int32" />
+          <NavigationProperty Name="Perfiles" Relationship="Self.RefPerfiles14" FromRole="Tecnicos" ToRole="Perfiles" />
+          <NavigationProperty Name="Tickets" Relationship="Self.RefTecnicos12" FromRole="Tecnicos" ToRole="Tickets" />
+          <NavigationProperty Name="UsrTecnicos" Relationship="Self.RefTecnicos26" FromRole="Tecnicos" ToRole="UsrTecnicos" />
+        </EntityType>
+        <EntityType Name="Ticket_Prioridad">
+          <Key>
+            <PropertyRef Name="TktPrd_Id" />
+          </Key>
+          <Property Name="TktPrd_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TktPrd_Tipo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tickets" Relationship="Self.RefTicket_Prioridad15" FromRole="Ticket_Prioridad" ToRole="Tickets" />
+        </EntityType>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Tkt_Id" />
+          </Key>
+          <Property Name="Tkt_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tkt_Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tec_Id" Type="Int32" />
+          <Property Name="TktPrd_Id" Type="Int32" />
+          <Property Name="PrbTc_Id" Type="Int32" />
+          <Property Name="EstdTick_Id" Type="Int32" />
+          <Property Name="Usr_Id" Type="Int32" />
+          <Property Name="Tkt_Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Eqs_Id" Type="Int32" />
+          <Property Name="Tkt_Fecha_Hora" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Equipos" Relationship="Self.fk_EquipoTickets" FromRole="Tickets" ToRole="Equipos" />
+          <NavigationProperty Name="Estado_Ticket" Relationship="Self.RefEstado_Ticket19" FromRole="Tickets" ToRole="Estado_Ticket" />
+          <NavigationProperty Name="Problemas_Tecnicos" Relationship="Self.RefProblemas_Tecnicos16" FromRole="Tickets" ToRole="Problemas_Tecnicos" />
+          <NavigationProperty Name="Recordatorios" Relationship="Self.RefTickets18" FromRole="Tickets" ToRole="Recordatorios" />
+          <NavigationProperty Name="Tecnicos" Relationship="Self.RefTecnicos12" FromRole="Tickets" ToRole="Tecnicos" />
+          <NavigationProperty Name="Ticket_Prioridad" Relationship="Self.RefTicket_Prioridad15" FromRole="Tickets" ToRole="Ticket_Prioridad" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.RefUsuarios20" FromRole="Tickets" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Tipo_Software">
+          <Key>
+            <PropertyRef Name="TpStw_Id" />
+          </Key>
+          <Property Name="TpStw_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TpStw_Tipo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Software" Relationship="Self.RefTipo_Software17" FromRole="Tipo_Software" ToRole="Software" />
+        </EntityType>
+        <EntityType Name="UsrTecnicos">
+          <Key>
+            <PropertyRef Name="UsrTecnico_Id" />
+          </Key>
+          <Property Name="UsrTecnico_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsrTecnico_Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UsrTecnico_Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tec_Id" Type="Int32" />
+          <NavigationProperty Name="Tecnicos" Relationship="Self.RefTecnicos26" FromRole="UsrTecnicos" ToRole="Tecnicos" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Usr_Id" />
+          </Key>
+          <Property Name="Usr_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usr_CodigoUsuario" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usr_NombreUsuario" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usr_Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Usr_Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dpt_Id" Type="Int32" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.RefDepartamentos1" FromRole="Usuarios" ToRole="Departamentos" />
+          <NavigationProperty Name="Equipos" Relationship="Self.RefUsuarios25" FromRole="Usuarios" ToRole="Equipos" />
+          <NavigationProperty Name="Tickets" Relationship="Self.RefUsuarios20" FromRole="Usuarios" ToRole="Tickets" />
+        </EntityType>
+        <Association Name="RefDepartamentos1">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="Dpt_Id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="Dpt_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EquipoTickets">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="Eqs_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Eqs_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefHardware22">
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hardware">
+              <PropertyRef Name="Hdw_Id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="Hdw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSoftware23">
+          <End Role="Software" Type="Self.Software" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Software">
+              <PropertyRef Name="Sfw_Id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="Sfw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUsuarios25">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Usr_Id" />
+            </Principal>
+            <Dependent Role="Equipos">
+              <PropertyRef Name="Usr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefEstado_Ticket19">
+          <End Role="Estado_Ticket" Type="Self.Estado_Ticket" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado_Ticket">
+              <PropertyRef Name="EstdTick_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="EstdTick_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefFabricante6">
+          <End Role="Fabricante" Type="Self.Fabricante" Multiplicity="0..1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricante">
+              <PropertyRef Name="Fabric_Id" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="Fabric_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefFabricante7">
+          <End Role="Fabricante" Type="Self.Fabricante" Multiplicity="0..1" />
+          <End Role="Hardware" Type="Self.Hardware" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabricante">
+              <PropertyRef Name="Fabric_Id" />
+            </Principal>
+            <Dependent Role="Hardware">
+              <PropertyRef Name="Fabric_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPerfiles14">
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="0..1" />
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfiles">
+              <PropertyRef Name="Prf_Id" />
+            </Principal>
+            <Dependent Role="Tecnicos">
+              <PropertyRef Name="Prf_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProblemas_Tecnicos16">
+          <End Role="Problemas_Tecnicos" Type="Self.Problemas_Tecnicos" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problemas_Tecnicos">
+              <PropertyRef Name="PrbTc_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="PrbTc_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTickets18">
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+          <End Role="Recordatorios" Type="Self.Recordatorios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tickets">
+              <PropertyRef Name="Tkt_Id" />
+            </Principal>
+            <Dependent Role="Recordatorios">
+              <PropertyRef Name="Tkt_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipo_Software17">
+          <End Role="Tipo_Software" Type="Self.Tipo_Software" Multiplicity="0..1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Software">
+              <PropertyRef Name="TpStw_Id" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="TpStw_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTecnicos12">
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnicos">
+              <PropertyRef Name="Tec_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Tec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTecnicos26">
+          <End Role="Tecnicos" Type="Self.Tecnicos" Multiplicity="0..1" />
+          <End Role="UsrTecnicos" Type="Self.UsrTecnicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tecnicos">
+              <PropertyRef Name="Tec_Id" />
+            </Principal>
+            <Dependent Role="UsrTecnicos">
+              <PropertyRef Name="Tec_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTicket_Prioridad15">
+          <End Role="Ticket_Prioridad" Type="Self.Ticket_Prioridad" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket_Prioridad">
+              <PropertyRef Name="TktPrd_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="TktPrd_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUsuarios20">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Usr_Id" />
+            </Principal>
+            <Dependent Role="Tickets">
+              <PropertyRef Name="Usr_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Bdl_ProyectoFinal_AEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+          <EntitySet Name="Estado_Ticket" EntityType="Self.Estado_Ticket" />
+          <EntitySet Name="Fabricante" EntityType="Self.Fabricante" />
+          <EntitySet Name="Hardware" EntityType="Self.Hardware" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
+          <EntitySet Name="Problemas_Tecnicos" EntityType="Self.Problemas_Tecnicos" />
+          <EntitySet Name="Recordatorios" EntityType="Self.Recordatorios" />
+          <EntitySet Name="Software" EntityType="Self.Software" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tecnicos" EntityType="Self.Tecnicos" />
+          <EntitySet Name="Ticket_Prioridad" EntityType="Self.Ticket_Prioridad" />
+          <EntitySet Name="Tickets" EntityType="Self.Tickets" />
+          <EntitySet Name="Tipo_Software" EntityType="Self.Tipo_Software" />
+          <EntitySet Name="UsrTecnicos" EntityType="Self.UsrTecnicos" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="RefDepartamentos1" Association="Self.RefDepartamentos1">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EquipoTickets" Association="Self.fk_EquipoTickets">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefHardware22" Association="Self.RefHardware22">
+            <End Role="Hardware" EntitySet="Hardware" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="RefSoftware23" Association="Self.RefSoftware23">
+            <End Role="Software" EntitySet="Software" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="RefUsuarios25" Association="Self.RefUsuarios25">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Equipos" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="RefEstado_Ticket19" Association="Self.RefEstado_Ticket19">
+            <End Role="Estado_Ticket" EntitySet="Estado_Ticket" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefFabricante6" Association="Self.RefFabricante6">
+            <End Role="Fabricante" EntitySet="Fabricante" />
+            <End Role="Software" EntitySet="Software" />
+          </AssociationSet>
+          <AssociationSet Name="RefFabricante7" Association="Self.RefFabricante7">
+            <End Role="Fabricante" EntitySet="Fabricante" />
+            <End Role="Hardware" EntitySet="Hardware" />
+          </AssociationSet>
+          <AssociationSet Name="RefPerfiles14" Association="Self.RefPerfiles14">
+            <End Role="Perfiles" EntitySet="Perfiles" />
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+          </AssociationSet>
+          <AssociationSet Name="RefProblemas_Tecnicos16" Association="Self.RefProblemas_Tecnicos16">
+            <End Role="Problemas_Tecnicos" EntitySet="Problemas_Tecnicos" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefTickets18" Association="Self.RefTickets18">
+            <End Role="Tickets" EntitySet="Tickets" />
+            <End Role="Recordatorios" EntitySet="Recordatorios" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipo_Software17" Association="Self.RefTipo_Software17">
+            <End Role="Tipo_Software" EntitySet="Tipo_Software" />
+            <End Role="Software" EntitySet="Software" />
+          </AssociationSet>
+          <AssociationSet Name="RefTecnicos12" Association="Self.RefTecnicos12">
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefTecnicos26" Association="Self.RefTecnicos26">
+            <End Role="Tecnicos" EntitySet="Tecnicos" />
+            <End Role="UsrTecnicos" EntitySet="UsrTecnicos" />
+          </AssociationSet>
+          <AssociationSet Name="RefTicket_Prioridad15" Association="Self.RefTicket_Prioridad15">
+            <End Role="Ticket_Prioridad" EntitySet="Ticket_Prioridad" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="RefUsuarios20" Association="Self.RefUsuarios20">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Tickets" EntitySet="Tickets" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Bdl_ProyectoFinal_AModelStoreContainer" CdmEntityContainer="Bdl_ProyectoFinal_AEntities2">
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Departamentos">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="Dpt_Id" ColumnName="Dpt_Id" />
+                <ScalarProperty Name="Dpt_Tipo" ColumnName="Dpt_Tipo" />
+                <ScalarProperty Name="Dpt_Nivel" ColumnName="Dpt_Nivel" />
+                <ScalarProperty Name="Dpt_CantidadComputo" ColumnName="Dpt_CantidadComputo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="Eqs_Id" ColumnName="Eqs_Id" />
+                <ScalarProperty Name="Eqs_Codigo" ColumnName="Eqs_Codigo" />
+                <ScalarProperty Name="Hdw_Id" ColumnName="Hdw_Id" />
+                <ScalarProperty Name="Sfw_Id" ColumnName="Sfw_Id" />
+                <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado_Ticket">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Estado_Ticket">
+              <MappingFragment StoreEntitySet="Estado_Ticket">
+                <ScalarProperty Name="EstdTick_Id" ColumnName="EstdTick_Id" />
+                <ScalarProperty Name="EstdTick_Tipo" ColumnName="EstdTick_Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabricante">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Fabricante">
+              <MappingFragment StoreEntitySet="Fabricante">
+                <ScalarProperty Name="Fabric_Id" ColumnName="Fabric_Id" />
+                <ScalarProperty Name="Fabric_Nombre" ColumnName="Fabric_Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hardware">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Hardware">
+              <MappingFragment StoreEntitySet="Hardware">
+                <ScalarProperty Name="Hdw_Id" ColumnName="Hdw_Id" />
+                <ScalarProperty Name="Hdw_Modelo" ColumnName="Hdw_Modelo" />
+                <ScalarProperty Name="Hdw_Serie" ColumnName="Hdw_Serie" />
+                <ScalarProperty Name="Fabric_Id" ColumnName="Fabric_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Perfiles">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="Prf_Id" ColumnName="Prf_Id" />
+                <ScalarProperty Name="Prf_Tipo" ColumnName="Prf_Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Problemas_Tecnicos">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Problemas_Tecnicos">
+              <MappingFragment StoreEntitySet="Problemas_Tecnicos">
+                <ScalarProperty Name="PrbTc_Id" ColumnName="PrbTc_Id" />
+                <ScalarProperty Name="Prb_Descripcion" ColumnName="Prb_Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recordatorios">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Recordatorios">
+              <MappingFragment StoreEntitySet="Recordatorios">
+                <ScalarProperty Name="Rcdt_Id" ColumnName="Rcdt_Id" />
+                <ScalarProperty Name="Rcdt_Descripcion" ColumnName="Rcdt_Descripcion" />
+                <ScalarProperty Name="Tkt_Id" ColumnName="Tkt_Id" />
+                <ScalarProperty Name="Rcdt_Fecha" ColumnName="Rcdt_Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Software">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Software">
+              <MappingFragment StoreEntitySet="Software">
+                <ScalarProperty Name="Sfw_Id" ColumnName="Sfw_Id" />
+                <ScalarProperty Name="Sfw_Nombre" ColumnName="Sfw_Nombre" />
+                <ScalarProperty Name="Fabric_Id" ColumnName="Fabric_Id" />
+                <ScalarProperty Name="TpStw_Id" ColumnName="TpStw_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tecnicos">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Tecnicos">
+              <MappingFragment StoreEntitySet="Tecnicos">
+                <ScalarProperty Name="Tec_Id" ColumnName="Tec_Id" />
+                <ScalarProperty Name="DPI" ColumnName="DPI" />
+                <ScalarProperty Name="Tec_Nombre1" ColumnName="Tec_Nombre1" />
+                <ScalarProperty Name="Tec_Nombre2" ColumnName="Tec_Nombre2" />
+                <ScalarProperty Name="Tec_Nombre3" ColumnName="Tec_Nombre3" />
+                <ScalarProperty Name="Tec_Apellido1" ColumnName="Tec_Apellido1" />
+                <ScalarProperty Name="Tec_Apellido2" ColumnName="Tec_Apellido2" />
+                <ScalarProperty Name="Tec_Apellido3" ColumnName="Tec_Apellido3" />
+                <ScalarProperty Name="Tec_Direccion" ColumnName="Tec_Direccion" />
+                <ScalarProperty Name="Tec_TlfPersonal" ColumnName="Tec_TlfPersonal" />
+                <ScalarProperty Name="Tec_TlfCasa" ColumnName="Tec_TlfCasa" />
+                <ScalarProperty Name="Prf_Id" ColumnName="Prf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket_Prioridad">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Ticket_Prioridad">
+              <MappingFragment StoreEntitySet="Ticket_Prioridad">
+                <ScalarProperty Name="TktPrd_Id" ColumnName="TktPrd_Id" />
+                <ScalarProperty Name="TktPrd_Tipo" ColumnName="TktPrd_Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Tickets">
+              <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Tkt_Id" ColumnName="Tkt_Id" />
+                <ScalarProperty Name="Tkt_Codigo" ColumnName="Tkt_Codigo" />
+                <ScalarProperty Name="Tec_Id" ColumnName="Tec_Id" />
+                <ScalarProperty Name="TktPrd_Id" ColumnName="TktPrd_Id" />
+                <ScalarProperty Name="PrbTc_Id" ColumnName="PrbTc_Id" />
+                <ScalarProperty Name="EstdTick_Id" ColumnName="EstdTick_Id" />
+                <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+                <ScalarProperty Name="Tkt_Descripcion" ColumnName="Tkt_Descripcion" />
+                <ScalarProperty Name="Eqs_Id" ColumnName="Eqs_Id" />
+                <ScalarProperty Name="Tkt_Fecha_Hora" ColumnName="Tkt_Fecha_Hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Software">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Tipo_Software">
+              <MappingFragment StoreEntitySet="Tipo_Software">
+                <ScalarProperty Name="TpStw_Id" ColumnName="TpStw_Id" />
+                <ScalarProperty Name="TpStw_Tipo" ColumnName="TpStw_Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsrTecnicos">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.UsrTecnicos">
+              <MappingFragment StoreEntitySet="UsrTecnicos">
+                <ScalarProperty Name="UsrTecnico_Id" ColumnName="UsrTecnico_Id" />
+                <ScalarProperty Name="UsrTecnico_Correo" ColumnName="UsrTecnico_Correo" />
+                <ScalarProperty Name="UsrTecnico_Password" ColumnName="UsrTecnico_Password" />
+                <ScalarProperty Name="Tec_Id" ColumnName="Tec_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="Bdl_ProyectoFinal_AModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Usr_Id" ColumnName="Usr_Id" />
+                <ScalarProperty Name="Usr_CodigoUsuario" ColumnName="Usr_CodigoUsuario" />
+                <ScalarProperty Name="Usr_NombreUsuario" ColumnName="Usr_NombreUsuario" />
+                <ScalarProperty Name="Usr_Correo" ColumnName="Usr_Correo" />
+                <ScalarProperty Name="Usr_Password" ColumnName="Usr_Password" />
+                <ScalarProperty Name="Dpt_Id" ColumnName="Dpt_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Bdl_ProyectoFinal_AModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

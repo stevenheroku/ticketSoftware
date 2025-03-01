@@ -1,0 +1,66 @@
+﻿@model Bdl_Grupo2_ProyectoFinal_A.Tecnicos
+@{
+    ViewBag.Title = "Registrar Tecnico";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="~/Css/FrmInicio.css" rel="stylesheet" />
+
+</head>
+<body style="background-color: #CCCCFF;">
+<div class="animate__animated animate__fadeIn w3_">
+    <div style="position: absolute; margin-left: 550px; margin-top: 100px;">
+
+        <div class="card login-form">
+            @if (Model.aceptado == 1)
+            {
+                <div id="alert_d" class="alert alert-danger" role="alert" style="position:absolute; top:-50px; width: 300px; left: 15px;">
+                    El correo electrónico o contraseña no estan registrados.
+                </div>
+            }
+            <div class="card-body">
+                <h4 class="card-title text-center" style="margin-bottom: 30px;">Hola, <b>@Model.Tec_Nombre1</b>. Por favor ingrese la información.</h4>
+                <div class="card-text">
+                    <form action="/UsrTecnicos/Registrarse" method="post">
+                        <input type="text" class="form-control form-control-sm" name="tec_id" value="@Model.Tec_Id" placeholder="Correo Electrónico" required hidden>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" name="correo" placeholder="Correo Electrónico" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-sm" name="pwd" id="pwd" onchange="onChange()" placeholder="Contraseña" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-sm" name="pwdc" id="pwdc" onchange="onChange()" placeholder="Repetir Contraseña" required autofocus>
+                            <span id='message'></span>
+                        </div>
+                        <button type="submit" style="width:100%;" class="btn btn-primary btn-block">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        function onChange() {
+            const password = document.querySelector('input[name=pwd]');
+            const confirm = document.querySelector('input[name=pwdc]');
+            if (confirm.value === password.value) {
+                confirm.setCustomValidity('');
+            } else {
+                confirm.setCustomValidity('Contraseñas no coinciden');
+            }
+        }
+    </script>
+</body>
+</html>

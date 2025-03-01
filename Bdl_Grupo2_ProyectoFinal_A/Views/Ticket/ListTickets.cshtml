@@ -1,0 +1,240 @@
+﻿    @model IEnumerable<Bdl_Grupo2_ProyectoFinal_A.Tickets>
+
+@{
+    ViewBag.Title = "Lista de Tickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #filter, #filter1{
+        background-image: url('https://www.w3schools.com/css/searchicon.png');
+        background-position: 12px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 40px;
+        padding: 12px 20px 12px 40px;
+    }
+    .card {
+        transition: all 0.5s ease;
+    }
+</style>
+<div class="container animate__animated animate__fadeIn w3_" style="margin-bottom: 50px;">
+    <h2 style="display:inline-block; margin-top:50px" class="display-4">LISTA DE TICKETS PENDIENTES</h2>
+    <a style="display:inline-block; margin-left:200px;" href="~/Ticket/ListTicketsTerminados">Terminados -></a>
+    @if (Convert.ToInt32(Session["Prf_Id"]) == 2 || Convert.ToInt32(Session["Prf_Id"]) == 3)
+    {
+    <div id="search_tec" class="row row-cols-lg-auto g-3 align-items-center" style="position: relative; top: 30px; ">
+        <div id="search_tec1" class="col-12">
+            <div id="search_tec2" class="input-group">
+                <input style="width: 740px;" class="form-control" type="search" id="filter1" onkeyup="searchTec()" placeholder="Buscar por Técnico..." aria-label="Search">
+            </div>
+        </div>
+        <div class="col-12">
+            <button id="btnCode" type="button" class="btn btn-light">Buscar por Código</button>
+        </div>
+        <div class="ch" style="margin-left: 10px;">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" style="background-color: #dc3545;" id="Alta" rel="Alta" onchange="change();" value="option1" />
+                <label class="form-check-label" for="inlineCheckbox1">Alta</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" style="background-color: #ffc107;" id="Media" rel="Media" onchange="change();" value="option2" />
+                <label class="form-check-label" for="inlineCheckbox1">Media</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" style="background-color: #007bff;" id="Baja" rel="Baja" onchange="change();" value="option3" />
+                <label class="form-check-label" for="inlineCheckbox1">Baja</label>
+            </div>
+        </div>
+    </div>
+    <div id="search_code" class="row row-cols-lg-auto g-3 align-items-center" style="position: relative; top: 30px; display: none;">
+        <div class="col-12">
+            <div class="input-group">
+                <input style="width: 740px;" class="form-control" type="search" id="filter" onkeyup="searchCode()" placeholder="Buscar por Código..." aria-label="Search">
+            </div>
+        </div>
+        <div class="col-12">
+            <button id="btnTec" type="button" class="btn btn-light">Buscar por Técnico</button>
+        </div>
+        
+    </div>
+    }
+    else
+    {
+    <div id="search_code" class="row row-cols-lg-auto g-3 align-items-center" style="position: relative; top: 30px;">
+        <div class="col-12">
+            <div class="input-group">
+                <input style="width:990px;" class="form-control" type="search" id="filter" onkeyup="searchCode()" placeholder="Buscar por Código..." aria-label="Search">
+            </div>
+        </div>
+        <div class="ch" style="margin-left: 5px;">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" style="background-color: #dc3545;" id="Alta" rel="Alta" onchange="change();" value="option1" />
+                <label class="form-check-label" for="inlineCheckbox1">Alta</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" style="background-color: #ffc107;" id="Media" rel="Media" onchange="change();" value="option2" />
+                <label class="form-check-label" for="inlineCheckbox1">Media</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" style="background-color: #007bff;" id="Baja" rel="Baja" onchange="change();" value="option2" />
+                <label class="form-check-label" for="inlineCheckbox1">Baja</label>
+            </div>
+        </div>
+    </div>
+    }
+    <div id="cardlist" style="margin-top: 60px;" class="row">
+
+        @foreach (var n in Model)
+        {
+            <div class="col-md-4" style="margin-top:20px;">
+                    <div class="@n.Ticket_Prioridad.TktPrd_Tipo card" style="width:20rem;">
+                        @if (n.TktPrd_Id == 1)
+                        {
+                            <span style="position:absolute; margin-top:8px; margin-left:190px;"
+                                  class="@n.Ticket_Prioridad.TktPrd_Tipo badge badge-pill badge-danger">
+                                Prioridad: @n.Ticket_Prioridad.TktPrd_Tipo
+                            </span>}
+                        else if (n.TktPrd_Id == 2)
+                        {<span style="position:absolute; margin-top:8px; margin-left:190px;"
+                               class="@n.Ticket_Prioridad.TktPrd_Tipo badge badge-pill badge-primary">
+                                Prioridad: @n.Ticket_Prioridad.TktPrd_Tipo
+                            </span>}
+                        else
+                        {<span style="position:absolute; margin-top:8px; margin-left:190px;"
+                               class="@n.Ticket_Prioridad.TktPrd_Tipo badge badge-pill badge-warning">
+                                Prioridad: @n.Ticket_Prioridad.TktPrd_Tipo
+                            </span>}
+                        <div class="card-body">
+                            <h5 class="card-title">Ticket: <b>@n.Tkt_Codigo</b></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Técnico: @n.Tecnicos.Tec_Nombre1</h6>
+                            <p class="card-text">Descripción: @n.Problemas_Tecnicos.Prb_Descripcion</p>
+                            <a href="~/Ticket/View_Ticket/@n.Tkt_Id" class="card-link">Ver Ticket</a>
+                            @if (Convert.ToInt32(Session["Prf_Id"]) == 2)
+                            {
+                                <a href="~/Ticket/Edit/@n.Tkt_Id" class="text-decoration-none" style="margin-left: 160px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                                    </svg>
+                                </a>
+                                <a href="~/Ticket/Delete/@n.Tkt_Id" class="text-decoration-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                    </svg>
+                                </a>}
+                        </div>
+                    </div>
+            </div>
+        }
+        <script>
+            document.getElementById('btnCode').addEventListener('click', function () {
+                document.getElementById('search_tec').style.display = 'none';
+                document.getElementById('search_code').style.display = '';
+            })
+            document.getElementById('btnTec').addEventListener('click', function () {
+                document.getElementById('search_tec').style.display = '';
+                document.getElementById('search_code').style.display = 'none';
+            })
+            function searchTec() {
+                const input = document.getElementById('filter1').value.toUpperCase();
+                const cardContainer = document.getElementById('cardlist');
+                const cards = cardContainer.getElementsByClassName('card');
+                for (let i = 0; i < cards.length; i++) {
+                    let title = cards[i].querySelector(".card-body h6.card-subtitle");
+                    if (title.innerText.toUpperCase().indexOf(input) > -1) {
+                        cards[i].style.display = "";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+            function searchCode() {
+                const input = document.getElementById('filter').value.toUpperCase();
+                const cardContainer = document.getElementById('cardlist');
+                const cards = cardContainer.getElementsByClassName('card');
+                for (let i = 0; i < cards.length; i++) {
+                    let title = cards[i].querySelector(".card-body h5.card-title");
+                    if (title.innerText.toUpperCase().indexOf(input) > -1) {
+                        cards[i].style.display = "block";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+            function change() {
+                var modelCbs = document.querySelectorAll(".form-check input[type='checkbox']");
+                var filters = {
+                    models: getClassOfCheckedCheckboxes(modelCbs),
+                };
+
+                filterResults(filters);
+            }
+
+            function getClassOfCheckedCheckboxes(checkboxes) {
+                var classes = [];
+
+                if (checkboxes && checkboxes.length > 0) {
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        var cb = checkboxes[i];
+
+                        if (cb.checked) {
+                            classes.push(cb.getAttribute("rel"));
+                        }
+                    }
+                }
+
+                return classes;
+            }
+
+            function filterResults(filters) {
+                var rElems = document.querySelectorAll(".card");
+                var hiddenElems = [];
+
+                if (!rElems || rElems.length <= 0) {
+                    return;
+                }
+
+                for (var i = 0; i < rElems.length; i++) {
+                    var el = rElems[i];
+
+                    if (filters.models.length > 0) {
+                        var isHidden = true;
+
+                        for (var j = 0; j < filters.models.length; j++) {
+                            var filter = filters.models[j];
+
+                            if (el.classList.contains(filter)) {
+                                isHidden = false;
+                                break;
+                            }
+                        }
+
+                        if (isHidden) {
+                            hiddenElems.push(el);
+                        }
+                    }
+                }
+
+                for (var i = 0; i < rElems.length; i++) {
+                    rElems[i].style.display = "block";
+                }
+
+                if (hiddenElems.length <= 0) {
+                    return;
+                }
+
+                for (var i = 0; i < hiddenElems.length; i++) {
+                    hiddenElems[i].style.display = "none";
+                }
+            }
+        </script>
+    </div>
+</div>
+
+

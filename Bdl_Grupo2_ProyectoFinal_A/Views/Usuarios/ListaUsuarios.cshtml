@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Bdl_Grupo2_ProyectoFinal_A.Usuarios>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+ }
+
+<div class="container animate__animated animate__fadeIn w3_">
+    <h2 style="display:inline-block; margin-top:50px; margin-left:300px;" class="display-4">LISTA DE USUARIOS</h2>
+    <div style="margin-top: 40px;" class="row">
+        @foreach (var item in Model)
+        {
+<div class="col-md-4" style="margin-top:20px; margin-bottom:20px;">
+    <div class="card" style="width:18rem; margin:10px;">
+        <div class="card-body">
+            <h5 class="card-title">Nombre Usuario</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.Usr_NombreUsuario</h6>
+            <br />
+            <hr />
+            <h5 class="card-title">Codigo Usuario</h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">@item.Usr_CodigoUsuario</h6>
+            <br />
+            <hr />
+            <h5 class="card-title">Tickets Generados</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.Cant_TicketGenerados</h6>
+            <br />
+            <hr />
+        </div>
+    </div>
+</div>      }
+    </div>
+</div>
+

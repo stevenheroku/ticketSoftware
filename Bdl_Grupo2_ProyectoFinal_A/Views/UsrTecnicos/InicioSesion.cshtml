@@ -1,0 +1,104 @@
+﻿@model Bdl_Grupo2_ProyectoFinal_A.UsrTecnicos
+@{
+    ViewBag.Title = "Inicio de Sesion Técnicos";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="~/Css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Css/FrmInicio.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        #change {
+            transition: all 0.5s ease-out;
+        }
+    </style>
+</head>
+<body style="overflow: hidden; background-color: #CCCCFF;">
+    <div class="animate__animated animate__fadeIn w3_">
+        <div style="margin-left: 550px; position:fixed; top: 90px;" id="change">
+            <div class="card login-form" style="margin-top: 20px;">
+                <div class="card-body">
+                    <div class="card-text">
+                        <form action="/UsrTecnicos/RegistrarTecnico" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" name="DPI" placeholder="Documento de Identifiación" required autofocus maxlength="13">
+                            </div>
+                            <button type="submit" style="width:100%;" class="btn btn-primary btn-block">Siguiente</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if(Model.aceptado==2 || Model.aceptado == 3)
+        {
+        <div style="margin-left: 550px; position:fixed; top: 560px;" id="change">
+            <div class="card login-form" style="margin-top: 20px;">
+                <div class="card-body">
+                    <div class="card-text">
+                        <form action="/UsrTecnicos/RegistrarTecnico" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" name="DPI" placeholder="Documento de Identifiación" required autofocus maxlength="13">
+                            </div>
+                            <button type="submit" style="width:100%;" class="btn btn-primary btn-block">Siguiente</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        <div style="position: absolute; margin-left: 550px; margin-top:80px;">
+            <div class="card login-form">
+                @if (Model.aceptado == 1)
+                {
+                    <div id="alert_d" class="alert alert-danger" role="alert" style="position:absolute; top:-50px; width: 300px; left: 15px;">
+                        El correo electrónico o contraseña no estan registrados.
+                    </div>
+                }
+                else if (Model.aceptado == 2)
+                {
+                    <div id="alert_d" class="alert alert-danger" role="alert" style="position:absolute; top:-50px; width: 300px; left: 15px;">
+                        Documento de Identificación no registrado.
+                    </div>
+                }
+                else if (Model.aceptado == 3)
+                {
+                    <div id="alert_d" class="alert alert-danger" role="alert" style="position:absolute; top:-50px; width: 300px; left: 15px;">
+                        El documento de identificación ya tiene una cuenta.
+                    </div>
+                }
+            <div class="card-body">
+                <a href="/Usuarios/Index"><img class="rounded mx-auto d-block" style="width:250px; height:150px; border:none;" src="~/Media/Tecnicos/Logo_DevSolutions.png" /></a>
+                <h3 class="card-title text-center" style="margin-bottom: 30px;">INICIO DE SESIÓN TÉCNICOS</h3>
+                <div class="card-text">
+                    <form action="/UsrTecnicos/VerificacionTecnico" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" name="usr" placeholder="Correo Electrónico" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-sm" name="pwd" placeholder="Contraseña" required autofocus>
+                        </div>
+                        <button type="submit" style="width:100%;" value="Guardar" class="btn btn-primary btn-block">Iniciar Sesion</button>
+                        
+                        <input id="button" type="button" class="btn btn-link" value="Crear Usuario">
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById('button').addEventListener('click', function () {
+                document.getElementById('change').style.transition = '';
+                document.getElementById('change').style.top = '560px';
+            })
+        </script>
+    </div>
+</body>
+</html>

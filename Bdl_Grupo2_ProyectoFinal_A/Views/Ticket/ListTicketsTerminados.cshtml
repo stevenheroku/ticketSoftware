@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Bdl_Grupo2_ProyectoFinal_A.Tickets>
+@{
+    ViewBag.Title = "Lista de Tickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container animate__animated animate__fadeIn w3_" style="margin-bottom: 50px;">
+    <a style="display:inline-block;" href="~/Ticket/ListTickets"><- Pendientes</a>
+    <h2 style="display:inline-block; margin-top:50px; margin-left:170px;" class="display-4">LISTA DE TICKETS TERMINADOS</h2>
+    <div style="margin-top: 40px;" class="row">
+        @foreach (var n in Model)
+        {
+            <div class="col-md-4" style="margin-top:20px;">
+
+                <div class="card" style="width: 20rem;">
+                    @if (n.TktPrd_Id == 1)
+                    {<span style="position: absolute; margin-top: 8px; margin-left: 190px;" class="badge badge-pill badge-danger">
+                            Prioridad: @n.Ticket_Prioridad.TktPrd_Tipo
+                        </span>}
+                    else if (n.TktPrd_Id == 2)
+                    {<span style="position: absolute; margin-top: 8px; margin-left: 190px;" class="badge badge-pill badge-primary">
+                            Prioridad: @n.Ticket_Prioridad.TktPrd_Tipo
+                        </span>}
+                    else
+                    {<span style="position: absolute; margin-top: 8px; margin-left: 190px;" class="badge badge-pill badge-warning">
+                            Prioridad: @n.Ticket_Prioridad.TktPrd_Tipo
+                        </span>}
+                <div class="card-body">
+                    <h5 class="card-title">Ticket: <b>@n.Tkt_Codigo</b></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Técnico: @n.Tecnicos.Tec_Nombre1</h6>
+                    <p class="card-text">Descripción: @n.Problemas_Tecnicos.Prb_Descripcion</p>
+                    <a href="~/Ticket/View_Ticket/@n.Tkt_Id" class="card-link">Ver Ticket</a>
+                    @if (Convert.ToInt32(Session["Prf_Id"]) == 2)
+                    {
+                        <a href="~/Ticket/Delete/@n.Tkt_Id" class="text-decoration-none" style="margin-left: 170px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                            </svg>
+                        </a>
+                    }
+                    </div>
+                </div>
+            </div>
+        }
+        
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    </div>
+</div>
+

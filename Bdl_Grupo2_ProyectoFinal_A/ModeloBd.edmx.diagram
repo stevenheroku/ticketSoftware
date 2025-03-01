@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7137dc193ea94ab09eeb302dd7f3d250" Name="Diagram1">
+        <EntityTypeShape EntityType="DevSolutionsModel.Departamentos" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Equipos" Width="1.5" PointX="9.875" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Estado_Ticket" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Fabricante" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Hardware" Width="1.5" PointX="8" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Perfiles" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Problemas_Tecnicos" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Recordatorios" Width="1.5" PointX="8.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Software" Width="1.5" PointX="8" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Tecnicos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Ticket_Prioridad" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Tickets" Width="2.125" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Tipo_Software" Width="1.5" PointX="7.625" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Ubicacion_Usuarios" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DevSolutionsModel.Usuarios" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="DevSolutionsModel.RefDepartamentos1" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefHardware22" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefSoftware23" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefUsuarios25" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefEstado_Ticket19" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefFabricante6" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefFabricante7" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefPerfiles14" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefProblemas_Tecnicos16" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefTickets18" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefTipo_Software17" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefTecnicos12" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefTicket_Prioridad15" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefUsuarios20" ManuallyRouted="false" />
+        <AssociationConnector Association="DevSolutionsModel.RefUsuarios8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

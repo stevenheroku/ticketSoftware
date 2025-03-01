@@ -1,0 +1,112 @@
+﻿@model Bdl_Grupo2_ProyectoFinal_A.Tickets
+
+@{
+    ViewBag.Title = "Lista de Tickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h5 {
+        color: #CCCCCC;
+    }
+</style>
+<div class="container animate__animated animate__fadeIn w3_">
+    <h5 class="card-title" style="margin-top:120px; margin-left:20px;">Ticket: <b style="color: #888888;">@Model.Tkt_Codigo</b></h5>
+    <div class="container" style="display: flex; margin-top:20px;">
+        <div class="card bg-ligth" style="height: 210px;">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Tkt_Id)
+                    <input type="text" name="correo" value="@Model.Usuarios.Usr_Correo" hidden>
+                    <input type="text" name="date" value="@Model.Tkt_Fecha_Hora" hidden>
+                    <div class="form-group col-md-12">
+                        <label>Estado Ticket</label>
+                        @if (Model.EstdTick_Id == 3)
+
+                        {
+                            @Html.DropDownList("EstdTick_Id", null, new { disabled = "disabled", @class = "form-control", id = "select" })
+                        }
+                        else
+                        {
+                            @Html.DropDownList("EstdTick_Id", null, new { @class = "form-control", style = "width: 93%;", id = "select" })
+                        }
+                    </div>
+                    <div style="margin-left: 400px;"></div>
+                    <div class="card-footer" style="height: 50px; margin-top: 30px;">
+                        @if (Model.EstdTick_Id == 3)
+                        {
+                            <input disabled type="submit" value="Actualizar" class="btn btn-primary" style="position: relative; top: 0px;">
+                        }
+                        else
+                        {
+                            <input type="submit" value="Actualizar" class="btn btn-primary" style="position: relative; top: 0px;">
+                        }
+                        <a class="btn btn-link" href="~/Ticket/ListTickets/" style="position: relative; top: 0px;">
+                            Regresar
+                        </a>
+                    </div>
+                }
+                <div style="position:absolute; margin-top:10px;">
+                    <a href="~/Usuarios/RedirectSendEmail?usr=@Model.Usuarios.Usr_Correo&id=@Model.Tkt_Id">Enviar notificación...</a>
+                </div>
+            </div>
+            @if (Model.EstdTick_Id == 3)
+            {
+                <div class="alert alert-success" role="alert" style="margin-top: 40px;">
+                    Ya se le ha notificado al Usuario.
+                </div>
+            }
+        </div>
+        <div style="overflow-y: scroll; max-height: 353px; width: 700px; margin-left: 20px ">
+            <h5 class="card-title" style="position: absolute; top: 120px;"><b style="color: #888888;">Información</b></h5>
+            <div style="left: 50px; color: #575757;">
+                <h5 class="card-title" style="display: inline-flex; color: #575757;">Fecha Creado: </h5>
+                <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Tkt_Fecha_Hora</b></h5>
+                <hr />
+            </div>
+            <div style="left: 50px;">
+                <h5 class="card-title" style="display: inline-flex; color: #575757;">Problema Técnico: </h5>
+                <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Problemas_Tecnicos.Prb_Descripcion</b></h5>
+                <hr />
+            </div>
+            <div style="left: 50px; top: 290px;">
+                <h5 class="card-title" style="display: inline-flex; color: #575757;">Descripción: </h5>
+                <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Tkt_Descripcion</b></h5>
+                <hr />
+            </div>
+            <div style="left: 50px; top: 290px;">
+                <h5 class="card-title" style="display: inline-flex; color: #575757;">Departamento usuario: </h5>
+                <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Usuarios.Departamentos.Dpt_Tipo</b></h5><br />
+                <h5 class="card-title" style="display: inline-flex; color: #575757;">Nivel Departamento: </h5>
+                <h5 class="card-title" style="display: inline-flex; color: #575757;"><b>@Model.Usuarios.Departamentos.Dpt_Nivel</b></h5>
+                <hr />
+            </div>
+            <div style="left:50px; top: 290px;">
+                <h5 class="card-title" style="color: #575757;">
+                    Equipo:
+                    <br />
+                    <br />
+                    <label>Código Equipo: <b>@Model.Equipos.Eqs_Codigo</b></label><br />
+                    <label>Hardware Modelo: <b>@Model.Equipos.Hardware.Hdw_Modelo</b></label><br />
+                    <label>Código Serie Hardware: <b>@Model.Equipos.Hardware.Hdw_Serie</b></label><br />
+                    <label>Software Nombre: <b>@Model.Equipos.Software.Sfw_Nombre</b></label><br />
+                    <label>Fabricante Software: <b>@Model.Equipos.Software.Fabricante.Fabric_Nombre</b></label><br />
+                    <label>Tipo Software: <b>@Model.Equipos.Software.Tipo_Software.TpStw_Tipo</b></label><br />
+                </h5>
+            </div>
+        </div>
+    @if (Session["Prf_Id"].ToString()== "1")
+    {
+    <script>
+        var select = $('#select').val;
+        if (select == '3') {
+            confirm.setCustomValidity('No tienes permisos');
+        } else {
+            confirm.setCustomValidity('');
+        }
+    </script>
+    }
+    </div>
+</div>
